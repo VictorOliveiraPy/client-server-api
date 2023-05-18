@@ -22,7 +22,7 @@ func main(){
 
 
 func handler(w http.ResponseWriter, r *http.Request) {
-	ctx, cancel := context.WithTimeout(context.Background(), 200*time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 300*time.Second)
 	defer cancel()
 
 	resp, err := client.GetDollarRate()

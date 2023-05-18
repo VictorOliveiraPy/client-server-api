@@ -6,13 +6,14 @@ import (
 	"log"
 	"net/http"
 	"time"
-	"github.com/VictorOliveiraPy/internal/domain/models"
 
+	"github.com/VictorOliveiraPy/internal/domain/models"
+	"github.com/VictorOliveiraPy/internal/utils"
 )
 
 
 func GetDollarRate() (*models.Response, error) {
-	ctx, cancel := context.WithTimeout(context.Background(),  10 * time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(),   200*time.Millisecond)
 	defer cancel()
 
 	req, err := http.NewRequestWithContext(ctx, "GET","https://economia.awesomeapi.com.br/json/last/USD-BRL", nil)
@@ -35,6 +36,7 @@ func GetDollarRate() (*models.Response, error) {
 		return nil, err
 	}
 
+	utils.SaveCotacaoToFile(usdbrl.USDBRL.Bid)
 
 	return &usdbrl, nil
 
