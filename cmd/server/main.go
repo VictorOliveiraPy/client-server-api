@@ -46,6 +46,11 @@ func handler(w http.ResponseWriter, r *http.Request) {
 				log.Fatal("Erro ao abrir o banco de dados:", err)
 			}
 			defer db.Close()
+			err = repository.CreateTable(db)
+			if err != nil {
+			log.Fatal("Erro ao criar a tabela:", err)
+			}
+
 			log.Println(resp)
 			err = repository.NewDataRepository(db, resp)
 			if err!= nil {

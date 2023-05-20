@@ -32,12 +32,9 @@ O arquivo `README.md` contém as instruções e informações sobre o projeto.
 
 ## Execução
 
-# Para cria o banco de dados, você pode usar os seguintes comandos:
-
-``go run main.go ``
 
 # Para executar o servidor:
-``go run internal/server/server.go``
+``go run cmd/server/main.go``
 
 
 Certifique-se de estar na raiz do projeto ao executar os comandos acima.
